@@ -134,7 +134,6 @@ E --> F[Welcome Email]
 
 # Contact Flow
 
-```mermaid
 flowchart TD
 
 A[Visitor]
@@ -144,8 +143,7 @@ B --> C[Server Action]
 
 C --> D[Resend]
 
-D --> E[hello@promethixlab.com]
-```
+D --> E["hello@promethixlab.com"]
 
 ---
 
