@@ -20,26 +20,33 @@ export default function ContactPage() {
             </div>
             <h1>Contact us</h1>
             <p>
-              Send us the problem, launch window, and the smallest version you think would be useful. We&apos;ll help
-              turn it into a focused scope that can ship quickly.
+              We are always looking for ways to improve our products and services. Contact us and let us know how we can help you.
             </p>
             <div className="contact-links" aria-label="Contact details">
-              <a href="mailto:hello@promethixlab.com">hello@promethixlab.com</a>
+              <a href="mailto:contact@yoursaas.ai">contact@yoursaas.ai</a>
               <span>•</span>
-              <a href="tel:+91800123XXXX">+91 800 123 XXXX</a>
+              <a href="tel:+1800123XX21">+1 (800) 123 XX21</a>
               <span>•</span>
-              <a href="mailto:support@promethixlab.com">support@promethixlab.com</a>
+              <a href="mailto:support@yoursaas.ai">support@yoursaas.ai</a>
             </div>
             <div className="contact-map" aria-hidden="true">
-              <div className="contact-map-label">We ship from here</div>
+              <div className="contact-map-label">We are here</div>
               <div className="contact-map-beam" />
               <div className="contact-map-pulse" />
-              {Array.from({ length: 86 }).map((_, index) => {
-                const x = (index * 37) % 100;
-                const y = (index * 19 + Math.floor(index / 7) * 11) % 100;
-
-                return <span key={index} style={{ "--dot-x": `${x}%`, "--dot-y": `${y}%` } as CSSProperties} />;
-              })}
+              {[
+                { name: "San Francisco", x: "16%", y: "41%" },
+                { name: "New York", x: "28%", y: "38%" },
+                { name: "London", x: "45%", y: "32%" },
+                { name: "Tokyo", x: "86%", y: "42%" },
+                { name: "Sydney", x: "90%", y: "76%" },
+              ].map((hub, index) => (
+                <span
+                  key={index}
+                  className="contact-map-dot"
+                  style={{ "--dot-x": hub.x, "--dot-y": hub.y } as CSSProperties}
+                  title={hub.name}
+                />
+              ))}
             </div>
           </div>
 

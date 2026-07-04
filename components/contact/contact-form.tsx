@@ -40,15 +40,15 @@ export function ContactForm() {
       </div>
       <div className="contact-field">
         <label htmlFor="email">Email Address</label>
-        <input id="email" name="email" type="email" placeholder="founder@company.com" required />
+        <input id="email" name="email" type="email" placeholder="support@aceternity.com" required />
       </div>
       <div className="contact-field">
         <label htmlFor="company">Company</label>
-        <input id="company" name="company" type="text" placeholder="Promethix Labs LLC" />
+        <input id="company" name="company" type="text" placeholder="Aceternity Labs LLC" />
       </div>
       <div className="contact-field">
         <label htmlFor="message">Message</label>
-        <textarea id="message" name="message" placeholder="Tell us what you want to ship" rows={6} required />
+        <textarea id="message" name="message" placeholder="Type your message here" rows={6} required />
       </div>
       <Button type="submit">Submit</Button>
     </form>
