@@ -297,7 +297,7 @@ footer {
   min-height: 90vh;
   padding: 40px 0 280px;
   overflow: hidden;
-  background: #000000;
+  background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -477,7 +477,7 @@ section {
 }
 
 .band-dark {
-  background: var(--canvas);
+  background: transparent;
   color: var(--on-dark);
   border-top: 1px solid var(--hairline);
   border-bottom: 1px solid var(--hairline);
@@ -970,7 +970,7 @@ section {
 
 .catalogue-section {
   padding: 80px 0 120px;
-  background: var(--canvas);
+  background: transparent;
   border-top: 1px solid var(--hairline-soft);
 }
 
@@ -1076,7 +1076,7 @@ section {
 .product-graph-section {
   position: relative;
   padding: 88px 0 64px;
-  background: #050506;
+  background: transparent;
   border-bottom: 1px solid var(--hairline);
 }
 
@@ -1310,7 +1310,7 @@ section {
 
 .site-footer {
   padding: 64px 0 32px;
-  background: var(--canvas);
+  background: transparent;
   border-top: 1px solid var(--hairline);
   color: var(--on-dark-soft);
 }
