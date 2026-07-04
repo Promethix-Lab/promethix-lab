@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/footer";
 import { Header } from "@/components/layout/header";
 import { NewsletterProvider } from "@/components/newsletter/newsletter-provider";
 import { Starfield } from "@/components/starfield";
+import { SmoothScrollProvider } from "@/components/layout/smooth-scroll-provider";
 
 import "./globals.css";
 
@@ -54,12 +55,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${fraunces.variable} ${jetbrains.variable}`}>
-        <NewsletterProvider>
-          <Starfield />
-          <Header />
-          <main>{children}</main>
-          <Footer />
-        </NewsletterProvider>
+        <SmoothScrollProvider>
+          <NewsletterProvider>
+            <Starfield />
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </NewsletterProvider>
+        </SmoothScrollProvider>
       </body>
     </html>
   );
