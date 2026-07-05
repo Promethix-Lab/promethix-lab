@@ -66,7 +66,7 @@ export function ContactForm() {
           id="fullName"
           name="fullName"
           type="text"
-          placeholder="Manu Arora"
+          placeholder="Your Name"
           disabled={isLoading}
           required
         />
@@ -77,7 +77,7 @@ export function ContactForm() {
           id="email"
           name="email"
           type="email"
-          placeholder="support@aceternity.com"
+          placeholder="brand@company.com"
           disabled={isLoading}
           required
         />
@@ -88,7 +88,7 @@ export function ContactForm() {
           id="company"
           name="company"
           type="text"
-          placeholder="Aceternity Labs LLC"
+          placeholder="Your Company Name"
           disabled={isLoading}
         />
       </div>
