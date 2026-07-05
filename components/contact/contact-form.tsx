@@ -8,12 +8,37 @@ import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 
+import { sendContactEmail } from "@/app/actions/contact";
+
 export function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setSubmitted(true);
+    setIsLoading(true);
+    setErrorMsg(null);
+
+    const formData = new FormData(event.currentTarget);
+    const fullName = formData.get("fullName") as string;
+    const email = formData.get("email") as string;
+    const company = (formData.get("company") as string) || undefined;
+    const message = formData.get("message") as string;
+
+    const result = await sendContactEmail({
+      fullName,
+      email,
+      company,
+      message,
+    });
+
+    setIsLoading(false);
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      setErrorMsg(result.error || "Something went wrong. Please try again.");
+    }
   };
 
   if (submitted) {
@@ -51,7 +76,8 @@ export function ContactForm() {
           id="fullName"
           name="fullName"
           type="text"
-          placeholder="Manu Arora"
+          placeholder="Your Name"
+          disabled={isLoading}
           required
         />
       </div>
@@ -61,7 +87,8 @@ export function ContactForm() {
           id="email"
           name="email"
           type="email"
-          placeholder="support@aceternity.com"
+          placeholder="brand@company.com"
+          disabled={isLoading}
           required
         />
       </div>
@@ -71,7 +98,8 @@ export function ContactForm() {
           id="company"
           name="company"
           type="text"
-          placeholder="Aceternity Labs LLC"
+          placeholder="Your Company Name"
+          disabled={isLoading}
         />
       </div>
       <div className="contact-field">
@@ -81,10 +109,21 @@ export function ContactForm() {
           name="message"
           placeholder="Type your message here"
           rows={6}
+          disabled={isLoading}
           required
         />
       </div>
-      <Button type="submit">Submit</Button>
+      {errorMsg && (
+        <p
+          className="contact-error-msg"
+          style={{ color: "#f87171", fontSize: "13px", marginBottom: "16px" }}
+        >
+          {errorMsg}
+        </p>
+      )}
+      <Button type="submit" disabled={isLoading}>
+        {isLoading ? "Submitting..." : "Submit"}
+      </Button>
       <p className="newsletter-note mt-4">
         By submitting this form, you agree to our{" "}
         <Link href="/privacy" className="underline hover:text-white transition-colors">
