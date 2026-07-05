@@ -34,7 +34,7 @@ I would build it like this.
 | CMS | Content Collections (Markdown/MDX) | No database needed |
 | Images | Cloudinary | Optimized assets |
 | Analytics | PostHog | Better product analytics than Google Analytics |
-| Newsletter | Beehiiv | Newsletter platform built for creators and startups |
+| Newsletter | loops.so | Newsletter platform built for creators and startups |
 | Contact Form | Resend + React Email | Reliable email delivery |
 | Domain & DNS | Cloudflare | Fast DNS, SSL & CDN |
 | Monitoring | Better Stack | Uptime monitoring |
@@ -205,7 +205,7 @@ Both developers work directly with Git.
 
 I would **not** build a newsletter system yourself.
 
-Use **Beehiiv**.
+Use **loops.so**.
 
 It is designed specifically for creators, indie hackers and startup founders.
 
@@ -224,7 +224,7 @@ Next.js Server Action
 
       │
 
-Beehiiv API
+loops.so API
 
       │
 
@@ -338,7 +338,7 @@ The website automatically generates:
       │             │             │
       ▼             ▼             ▼
  Products      Newsletter      Contact
-   (MDX)      (Beehiiv API)    (Resend)
+   (MDX)      (loops.so API)    (Resend)
       │
       ▼
  GitHub Repository
@@ -357,7 +357,7 @@ The website automatically generates:
 | Hosting | Vercel |
 | DNS | Cloudflare |
 | Git | GitHub |
-| Newsletter | Beehiiv |
+| Newsletter | loops.so |
 | Email Sending | Resend |
 | Analytics | PostHog |
 | Error Monitoring | Sentry |

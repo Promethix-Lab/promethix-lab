@@ -33,7 +33,7 @@ Promethix Lab is a **content-driven studio website** that showcases products, pu
 | DNS/CDN | Cloudflare |
 | Source Control | GitHub |
 | Content | MDX + Content Collections |
-| Newsletter | Beehiiv |
+| Newsletter | loops.so |
 | Contact Emails | Resend |
 | Analytics | PostHog |
 | Error Monitoring | Sentry |
@@ -118,14 +118,14 @@ E --> F[Website Updated]
 
 # Newsletter Flow
 
-Beehiiv manages subscribers and email campaigns.
+loops.so manages subscribers and email campaigns.
 
 ```mermaid
 flowchart TD
 
 A[Visitor] --> B[Newsletter Form]
 B --> C[Next.js Server Action]
-C --> D[Beehiiv API]
+C --> D[loops.so API]
 D --> E[Subscriber Added]
 E --> F[Welcome Email]
 ```
@@ -217,7 +217,7 @@ Deploy --> Production
 | Hosting | Vercel |
 | DNS | Cloudflare |
 | Git | GitHub |
-| Newsletter | Beehiiv |
+| Newsletter | loops.so |
 | Email | Resend |
 | Analytics | PostHog |
 | Monitoring | Better Stack |
@@ -230,8 +230,8 @@ Deploy --> Production
 # Environment Variables
 
 ```env
-BEEHIIV_API_KEY=
-BEEHIIV_PUBLICATION_ID=
+loops.so_API_KEY=
+loops.so_PUBLICATION_ID=
 
 RESEND_API_KEY=
 
@@ -302,7 +302,7 @@ NEXT --> ANALYTICS[PostHog]
 NEXT --> IMAGES[Cloudinary]
 end
 
-NEWSLETTER --> BEEHIIV[Beehiiv]
+NEWSLETTER --> loops.so[loops.so]
 
 CONTACT --> RESEND[Resend]
 

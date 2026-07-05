@@ -1,6 +1,13 @@
 "use client";
-
-import { createContext, type FormEvent, type ReactNode, useContext, useMemo, useState } from "react";
+import { subscribeToNewsletter } from "@/app/actions/newsletter";
+import {
+  createContext,
+  type FormEvent,
+  type ReactNode,
+  useContext,
+  useMemo,
+  useState,
+} from "react";
 import { CheckIcon, MailIcon, XIcon } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -26,6 +33,8 @@ export function NewsletterProvider({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const value = useMemo(() => ({ open: () => setIsOpen(true) }), []);
 
   const close = () => {
@@ -33,12 +42,24 @@ export function NewsletterProvider({ children }: { children: ReactNode }) {
     window.setTimeout(() => {
       setIsSubscribed(false);
       setEmail("");
+      setErrorMsg(null);
+      setIsLoading(false);
     }, 220);
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsSubscribed(true);
+    setIsLoading(true);
+    setErrorMsg(null);
+
+    const result = await subscribeToNewsletter(email);
+
+    setIsLoading(false);
+    if (result.success) {
+      setIsSubscribed(true);
+    } else {
+      setErrorMsg(result.error || "An error occurred.");
+    }
   };
 
   return (
@@ -46,8 +67,18 @@ export function NewsletterProvider({ children }: { children: ReactNode }) {
       {children}
       {isOpen ? (
         <div className="newsletter-overlay" role="presentation">
-          <div className="newsletter-dialog" role="dialog" aria-modal="true" aria-labelledby="newsletter-title">
-            <button className="newsletter-close" type="button" aria-label="Close newsletter dialog" onClick={close}>
+          <div
+            className="newsletter-dialog"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="newsletter-title"
+          >
+            <button
+              className="newsletter-close"
+              type="button"
+              aria-label="Close newsletter dialog"
+              onClick={close}
+            >
               <XIcon aria-hidden="true" />
             </button>
             {isSubscribed ? (
@@ -57,8 +88,10 @@ export function NewsletterProvider({ children }: { children: ReactNode }) {
                 </div>
                 <h2 id="newsletter-title">You&apos;re subscribed.</h2>
                 <p>
-                  Thanks for joining Promethix Lab. Each week, you&apos;ll receive practical notes on spotting startup
-                  ideas, how we scope and ship small products, and what we&apos;re learning from the daily catalogue.
+                  Thanks for joining Promethix Lab. Each week, you&apos;ll
+                  receive practical notes on spotting startup ideas, how we
+                  scope and ship small products, and what we&apos;re learning
+                  from the daily catalogue.
                 </p>
                 <Button type="button" onClick={close}>
                   Done
@@ -70,10 +103,13 @@ export function NewsletterProvider({ children }: { children: ReactNode }) {
                   <MailIcon aria-hidden="true" />
                 </div>
                 <span className="eyebrow">Weekly field notes</span>
-                <h2 id="newsletter-title">Get the Promethix Lab build letter.</h2>
+                <h2 id="newsletter-title">
+                  Get the Promethix Lab build letter.
+                </h2>
                 <p>
-                  One concise email each week with startup idea prompts, build notes, shipping decisions, and the best
-                  lessons from the products we launch.
+                  One concise email each week with startup idea prompts, build
+                  notes, shipping decisions, and the best lessons from the
+                  products we launch.
                 </p>
                 <form className="newsletter-form" onSubmit={handleSubmit}>
                   <label htmlFor="newsletter-email">Email address</label>
@@ -86,10 +122,15 @@ export function NewsletterProvider({ children }: { children: ReactNode }) {
                       placeholder="you@example.com"
                       required
                     />
-                    <Button type="submit">Subscribe</Button>
+                    <Button type="submit" disabled={isLoading}>
+                      {isLoading ? "Subscribing..." : "Subscribe"}
+                    </Button>
                   </div>
                 </form>
-                <p className="newsletter-note">No noise. No daily spam. Just the weekly operating notes worth keeping.</p>
+                <p className="newsletter-note">
+                  No noise. No daily spam. Just the weekly operating notes worth
+                  keeping.
+                </p>
               </>
             )}
           </div>
@@ -105,11 +146,20 @@ type NewsletterTriggerProps = {
   className?: string;
 };
 
-export function NewsletterTrigger({ children, variant = "primary", className }: NewsletterTriggerProps) {
+export function NewsletterTrigger({
+  children,
+  variant = "primary",
+  className,
+}: NewsletterTriggerProps) {
   const { open } = useNewsletter();
 
   return (
-    <Button type="button" variant={variant} className={cn(className)} onClick={open}>
+    <Button
+      type="button"
+      variant={variant}
+      className={cn(className)}
+      onClick={open}
+    >
       {children}
     </Button>
   );
