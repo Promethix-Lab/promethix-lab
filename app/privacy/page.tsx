@@ -22,6 +22,7 @@ export default function PrivacyPage() {
         <div className="space-y-10 text-[#a1a1a6] leading-relaxed text-base">
           <section style={{ padding: 0 }}>
             <p>
+              <br />
               Welcome to Promethix Lab (&ldquo;Promethix Lab&rdquo;, &ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;). This Privacy Policy explains how we collect, use, disclose, and protect your information when you visit{" "}
               <a href="https://www.promethixlab.com" className="text-white underline hover:text-[#ffb020] transition-colors">
                 https://www.promethixlab.com
