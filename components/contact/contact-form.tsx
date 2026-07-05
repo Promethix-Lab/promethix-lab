@@ -3,6 +3,8 @@
 import type { FormEvent } from "react";
 import { useState } from "react";
 import { CheckIcon } from "lucide-react";
+import Link from "next/link";
+import { motion } from "framer-motion";
 
 import { Button } from "@/components/ui/button";
 
@@ -59,7 +61,15 @@ export function ContactForm() {
   }
 
   return (
-    <form className="contact-form" onSubmit={handleSubmit}>
+    <motion.form
+      id="contact-form"
+      className="contact-form"
+      onSubmit={handleSubmit}
+      initial={{ opacity: 0, y: 80 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+    >
       <div className="contact-field">
         <label htmlFor="fullName">Full name</label>
         <input
@@ -115,5 +125,13 @@ export function ContactForm() {
         {isLoading ? "Submitting..." : "Submit"}
       </Button>
     </form>
+      <Button type="submit">Submit</Button>
+      <p className="newsletter-note mt-4">
+        By submitting this form, you agree to our{" "}
+        <Link href="/privacy" className="underline hover:text-white transition-colors">
+          Privacy Policy
+        </Link>.
+      </p>
+    </motion.form>
   );
 }
