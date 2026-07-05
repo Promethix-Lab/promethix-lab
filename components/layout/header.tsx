@@ -16,6 +16,10 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
 
+  if (pathname === "/privacy") {
+    return null;
+  }
+
   return (
     <header className="site-header">
       <div className="wrap">
