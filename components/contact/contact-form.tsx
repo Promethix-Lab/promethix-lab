@@ -124,8 +124,6 @@ export function ContactForm() {
       <Button type="submit" disabled={isLoading}>
         {isLoading ? "Submitting..." : "Submit"}
       </Button>
-    </form>
-      <Button type="submit">Submit</Button>
       <p className="newsletter-note mt-4">
         By submitting this form, you agree to our{" "}
         <Link href="/privacy" className="underline hover:text-white transition-colors">
