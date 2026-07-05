@@ -23,11 +23,6 @@ export default function ContactPage() {
               We are always looking for ways to improve our products and services. Contact us and let us know how we can help you.
             </p>
             <div className="contact-links" aria-label="Contact details">
-              <a href="mailto:contact@yoursaas.ai">contact@yoursaas.ai</a>
-              <span>•</span>
-              <a href="tel:+1800123XX21">+1 (800) 123 XX21</a>
-              <span>•</span>
-              <a href="mailto:support@yoursaas.ai">support@yoursaas.ai</a>
             </div>
             <div className="contact-map" aria-hidden="true">
               <div className="contact-map-label">We are here</div>
