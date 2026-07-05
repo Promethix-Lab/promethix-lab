@@ -42,7 +42,7 @@ export async function sendContactEmail(data: {
           <p><strong>Message:</strong></p>
           <p style="white-space: pre-wrap; line-height: 1.6; color: #333;">${data.message}</p>
         </div>
-      `
+      `,
     });
 
     // 2. Send confirmation email directly to the user
@@ -52,35 +52,27 @@ export async function sendContactEmail(data: {
       from: "Promethix Lab <hello@promethixlab.com>",
       to: [data.email],
       subject: "We received your message! - Promethix Lab",
-      html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 25px; background-color: #0b0b0c; color: #fff; border: 1px solid #27272a; border-radius: 12px;">
-          <h2 style="color: #fff; font-size: 22px; font-weight: 800; border-bottom: 1px solid #27272a; padding-bottom: 12px; margin-top: 0;">Hi ${data.fullName},</h2>
-          <p style="line-height: 1.6; color: #a1a1aa; font-size: 14px;">
-            Thank you for reaching out to Promethix Lab. We have received your message regarding:
-          </p>
-          <blockquote style="border-left: 3px solid #635bff; padding-left: 15px; margin: 20px 0; color: #d4d4d8; font-style: italic; font-size: 14px;">
-            "${data.message}"
-          </blockquote>
-          <p style="line-height: 1.6; color: #a1a1aa; font-size: 14px;">
-            Our team will review your message and get back to you with a practical next step within the next **24 hours**.
-          </p>
-          <p style="line-height: 1.6; color: #a1a1aa; font-size: 14px; margin-bottom: 0;">
-            Best,<br />
-            <strong>Promethix Lab Team</strong>
-          </p>
-        </div>
-      `
+      template: {
+        id: "contact-request-received",
+        variables: {
+          fullName: data.fullName,
+          message: data.message,
+        },
+      },
     });
 
     // Wait for both emails to be sent concurrently
     const [adminResult, userResult] = await Promise.all([
       adminEmailPromise,
-      userConfirmationPromise
+      userConfirmationPromise,
     ]);
 
     if (adminResult.error) {
       console.error("Resend Admin Email Error:", adminResult.error);
-      return { success: false, error: adminResult.error.message || "Failed to send email." };
+      return {
+        success: false,
+        error: adminResult.error.message || "Failed to send email.",
+      };
     }
 
     if (userResult.error) {
@@ -93,6 +85,9 @@ export async function sendContactEmail(data: {
   } catch (error) {
     const err = error as Error;
     console.error("Resend contact email error:", err);
-    return { success: false, error: err.message || "Connection error. Please try again." };
+    return {
+      success: false,
+      error: err.message || "Connection error. Please try again.",
+    };
   }
 }
