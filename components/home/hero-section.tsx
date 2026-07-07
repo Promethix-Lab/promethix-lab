@@ -25,8 +25,7 @@ export function HeroSection() {
           <em>every single day.</em>
         </h1>
         <p>
-          A small studio that ships real apps and websites on a daily cadence — for our own catalogue, and for founders
-          who can&apos;t wait a quarter to see something live.
+        We build, launch, and grow software products every single day. Some become businesses. Every one starts with solving a real problem.
         </p>
         <div className="hero-actions">
           <NewsletterTrigger>Join Newsletter</NewsletterTrigger>

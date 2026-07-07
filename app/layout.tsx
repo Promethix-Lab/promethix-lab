@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     template: "%s | Promethix Lab"
   },
   description:
-    "A small studio that ships real apps and websites on a daily cadence for its own catalogue and for founders who need something live fast.",
+    "We build, launch, and grow software products every single day.Some become businesses. Some get acquired. Every one starts with solving a real problem.",
   openGraph: {
     title: "Promethix Lab - We ship, every day.",
     description:

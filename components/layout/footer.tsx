@@ -9,11 +9,11 @@ export function Footer() {
         <div className="footer-top">
           <div className="footer-brand">
             <FlameMark footer />
-            <p>A studio shipping one new app or website every day. Small scope, real deadlines, public track record.</p>
+            <p>Creating software products that solve real problems, generate revenue, and keep shipping.</p>
           </div>
           <div className="footer-col">
             <h4>Studio</h4>
-            <Link href="/#work">Today&apos;s Ship</Link>
+            <Link href="/#work">Latest Launches</Link>
             <Link href="/products">Products</Link>
             <Link href="/#process">Process</Link>
             <Link href="/contact">Contact</Link>

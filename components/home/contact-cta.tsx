@@ -7,17 +7,16 @@ export function ContactCta() {
     <section id="contact">
       <div className="wrap">
         <div className="cta-coral">
-          <h2>Got an idea? We could have it live by tomorrow.</h2>
+          <h2>Let’s build something worth shipping.</h2>
           <p>
-            Send us the problem, not the spec. We&apos;ll scope the smallest version worth shipping and get it in front
-            of you fast.
+            The same team behind our products is available for custom projects.
           </p>
           <div className="cta-actions">
             <Button asChild variant="onCoral">
               <Link href="/contact">Start a project</Link>
             </Button>
             <Button asChild variant="ghost">
-              <Link href="/products">View the full log</Link>
+              <Link href="/products">Browse Our Products</Link>
             </Button>
           </div>
         </div>
