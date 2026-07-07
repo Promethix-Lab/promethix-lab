@@ -126,6 +126,18 @@ export function NewsletterProvider({ children }: { children: ReactNode }) {
                       {isLoading ? "Subscribing..." : "Subscribe"}
                     </Button>
                   </div>
+                  {errorMsg && (
+                    <p
+                      className="newsletter-error-msg"
+                      style={{
+                        color: "#f87171",
+                        fontSize: "13px",
+                        marginTop: "8px",
+                      }}
+                    >
+                      {errorMsg}
+                    </p>
+                  )}
                 </form>
                 <p className="newsletter-note">
                   No noise. No daily spam. Just the weekly operating notes worth

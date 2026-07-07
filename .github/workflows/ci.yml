@@ -37,6 +37,5 @@ jobs:
           STRIPE_SECRET_KEY: "mock_key"
           LOOPS_API_KEY: "mock_key"
           RESEND_API_KEY: "mock_key"
-          NEXT_PUBLIC_POSTHOG_KEY: "mock_key"
           # Pass the Sentry Auth Token secret from GitHub Settings
           SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
