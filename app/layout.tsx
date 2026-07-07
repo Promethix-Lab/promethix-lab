@@ -6,9 +6,7 @@ import { Header } from "@/components/layout/header";
 import { NewsletterProvider } from "@/components/newsletter/newsletter-provider";
 import { Starfield } from "@/components/starfield";
 import { SmoothScrollProvider } from "@/components/layout/smooth-scroll-provider";
-
 import "./globals.css";
-import { PostHogProvider } from "@/components/posthog-provider";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -57,14 +55,12 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} ${fraunces.variable} ${jetbrains.variable}`}>
         <SmoothScrollProvider>
-          <PostHogProvider>
             <NewsletterProvider>
               <Starfield />
               <Header />
               <main>{children}</main>
               <Footer />
             </NewsletterProvider>
-          </PostHogProvider>
         </SmoothScrollProvider>
       </body>
     </html>
