@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from "framer-motion";
 import { SpotlightCard } from "@/components/spotlight-card";
 
 import { DashboardMockup, InvoiceMockup, StoreMockup, WaveformMockup } from "./mockups";
@@ -6,14 +9,28 @@ export function FeaturedWork() {
   return (
     <section id="work" className="band-dark">
       <div className="wrap">
-        <div className="section-head">
+        <motion.div
+          className="section-head"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
           <span className="eyebrow">From the catalogue</span>
-          <h2>A few things we shipped recently</h2>
-          <p>Apps and websites, built the same way every time — fast, focused, and handed over ready to use.</p>
-        </div>
+          <h2>A few things we launched recently</h2>
+          <p>Every release starts as an idea and ships as a real product. Here’s what we’ve launched recently.</p>
+        </motion.div>
 
         <div className="bento-grid">
-          <SpotlightCard className="bento-card col-2 row-2">
+          {/* Pocket Ledger */}
+          <SpotlightCard
+            className="bento-card col-2 row-2"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.0 }}
+            whileHover={{ y: -4, transition: { duration: 0.25, ease: "easeOut" } }}
+          >
             <div className="bento-glow-teal" />
             <div className="bento-layout-horizontal">
               <div className="bento-details">
@@ -36,7 +53,15 @@ export function FeaturedWork() {
             </div>
           </SpotlightCard>
 
-          <SpotlightCard className="bento-card row-2">
+          {/* Fieldnote */}
+          <SpotlightCard
+            className="bento-card row-2"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            whileHover={{ y: -4, transition: { duration: 0.25, ease: "easeOut" } }}
+          >
             <div className="bento-glow-indigo" />
             <div className="bento-details bento-details-start">
               <span className="bento-kicker">WEB APP</span>
@@ -53,7 +78,15 @@ export function FeaturedWork() {
             </div>
           </SpotlightCard>
 
-          <SpotlightCard className="bento-card">
+          {/* Kettlecorn Co. */}
+          <SpotlightCard
+            className="bento-card"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
+            whileHover={{ y: -4, transition: { duration: 0.25, ease: "easeOut" } }}
+          >
             <div className="bento-glow-amber" />
             <div className="bento-details">
               <div className="bento-text">
@@ -71,7 +104,15 @@ export function FeaturedWork() {
             </div>
           </SpotlightCard>
 
-          <SpotlightCard className="bento-card col-2">
+          {/* Tallyframe */}
+          <SpotlightCard
+            className="bento-card col-2"
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+            whileHover={{ y: -4, transition: { duration: 0.25, ease: "easeOut" } }}
+          >
             <div className="bento-glow-coral" />
             <div className="bento-layout-horizontal">
               <div className="bento-details" style={{ flex: 1.2 }}>

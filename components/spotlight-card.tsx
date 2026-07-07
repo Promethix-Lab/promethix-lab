@@ -1,11 +1,13 @@
 "use client";
 
 import { useRef } from "react";
-import type { MouseEvent, HTMLAttributes } from "react";
+import type { MouseEvent } from "react";
+import { motion } from "framer-motion";
+import type { HTMLMotionProps } from "framer-motion";
 
 import { cn } from "@/lib/utils";
 
-type SpotlightCardProps = HTMLAttributes<HTMLDivElement>;
+type SpotlightCardProps = HTMLMotionProps<"div">;
 
 export function SpotlightCard({ className, onMouseMove, ...props }: SpotlightCardProps) {
   const rectRef = useRef<DOMRect | null>(null);
@@ -25,7 +27,7 @@ export function SpotlightCard({ className, onMouseMove, ...props }: SpotlightCar
   };
 
   return (
-    <div
+    <motion.div
       className={cn(className)}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}

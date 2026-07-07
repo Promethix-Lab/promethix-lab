@@ -24,7 +24,20 @@ export function ProductsDashboard({ products }: ProductsDashboardProps) {
   }, [activeCategory, products]);
 
   return (
-    <div className="products-dashboard">
+    <motion.div
+      className="products-dashboard"
+      initial={{ opacity: 0, y: 60 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+    >
+      <div id="catalogue" className="section-head" style={{ marginBottom: 40 }}>
+        <span className="eyebrow">Catalogue</span>
+        <h2>Every ship index</h2>
+        <p>
+          A complete record of the web applications, storefronts, and open source utilities shipped by Promethix Lab.
+        </p>
+      </div>
+
       {/* Category Tabs Filter */}
       <div className="filter-tabs" role="tablist" aria-label="Filter shipped products">
         {tabs.map((tab) => (
@@ -58,6 +71,6 @@ export function ProductsDashboard({ products }: ProductsDashboardProps) {
           ))}
         </AnimatePresence>
       </motion.div>
-    </div>
+    </motion.div>
   );
 }
