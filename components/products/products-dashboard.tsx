@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { CatalogueProduct, ProductCategory } from "@/lib/product-types";
 import { categoryLabels } from "@/lib/product-types";
 import { ProductCardInteractive } from "./product-card-interactive";
+import { ShippingSoonCard } from "@/components/shipping-soon-card";
 
 const tabs: Array<ProductCategory | "all"> = ["all", "apps", "sites", "oss"];
 
@@ -69,8 +70,19 @@ export function ProductsDashboard({ products }: ProductsDashboardProps) {
               <ProductCardInteractive product={product} />
             </motion.div>
           ))}
+          <motion.div
+            key="shipping-soon"
+            layout
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.96 }}
+            transition={{ duration: 0.2, ease: "easeInOut" }}
+          >
+            <ShippingSoonCard />
+          </motion.div>
         </AnimatePresence>
       </motion.div>
     </motion.div>
+
   );
 }
