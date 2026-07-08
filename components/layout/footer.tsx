@@ -12,7 +12,7 @@ export function Footer() {
             <p>Creating software products that solve real problems, generate revenue, and keep shipping.</p>
           </div>
           <div className="footer-col">
-            <h4>Studio</h4>
+            <h4>Lab</h4>
             <Link href="/#work">Latest Launches</Link>
             <Link href="/products">Products</Link>
             <Link href="/#process">Process</Link>

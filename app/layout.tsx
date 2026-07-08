@@ -31,7 +31,7 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL("https://promethixlab.com"),
   title: {
-    default: "Promethix Lab - We ship, every day.",
+    default: "Promethix Lab - Where ideas become software.",
     template: "%s | Promethix Lab"
   },
   description:
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Promethix Lab - We ship, every day.",
     description:
-      "A public studio website and product catalogue for daily shipped apps, websites, and open-source utilities.",
+      "A home for everything we build.",
     url: "https://promethixlab.com",
     siteName: "Promethix Lab",
     type: "website"
