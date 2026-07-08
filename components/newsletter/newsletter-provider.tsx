@@ -93,6 +93,7 @@ export function NewsletterProvider({ children }: { children: ReactNode }) {
                   scope and ship small products, and what we&apos;re learning
                   from the daily catalogue.
                 </p>
+                <br />
                 <Button type="button" onClick={close}>
                   Done
                 </Button>
